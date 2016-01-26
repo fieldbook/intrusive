@@ -26,6 +26,15 @@
 
   "globals": {
     "Q": true, // Client has to import Q, server doesn't
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "after": false,
+    "expect": false,
     "BaseObject": true,
+    "FB": true,
+    "_": false
   }
 }

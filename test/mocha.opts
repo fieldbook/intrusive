@@ -1,0 +1,4 @@
+--require index
+--reporter spec
+--slow 1000
+-t 10000

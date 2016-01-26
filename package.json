@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/fieldbook/intrusive/issues"
   },
-  "homepage": "https://github.com/fieldbook/intrusive#readme"
+  "homepage": "https://github.com/fieldbook/intrusive#readme",
+  "dependencies": {
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.2.0",
+    "inflection": "^1.8.0",
+    "jscs": "^2.9.0",
+    "q": "^0.9.7",
+    "underscore": "^1.8.3"
+  }
 }

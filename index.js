@@ -7,4 +7,6 @@ global.gettable = require('./lib/gettable');
 
 // Require some prototype modifiers
 require('./lib/q.fieldbook');
+require('./lib/underscore.fieldbook');
 require('./lib/objectUnderscore');
+require('./lib/proto/index');
