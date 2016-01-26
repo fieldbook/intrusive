@@ -4,7 +4,7 @@
   "description": "a set of intrusive javascript modules, not for use in libraries",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --harmony"
   },
   "repository": {
     "type": "git",
@@ -17,11 +17,17 @@
   },
   "homepage": "https://github.com/fieldbook/intrusive#readme",
   "dependencies": {
-    "chai": "^3.4.1",
-    "chai-as-promised": "^5.2.0",
     "inflection": "^1.8.0",
-    "jscs": "^2.9.0",
     "q": "^0.9.7",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "jscs": "^2.9.0",
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.2.0",
+    "mocha": "2.3.3"
+  },
+  "engines": {
+    "node": "5.4.0"
   }
 }
