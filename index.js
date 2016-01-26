@@ -10,3 +10,4 @@ require('./lib/q.fieldbook');
 require('./lib/underscore.fieldbook');
 require('./lib/objectUnderscore');
 require('./lib/proto/index');
+require('./lib/functionBuilder');
