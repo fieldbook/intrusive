@@ -304,6 +304,35 @@ describe('Function Builder', function () {
     return [x, y, z]._.invoke('capitalize').join('');
   })
 
+  testFn('chainable', function (getter) {
+    var testObj;
+    before(function () {
+      testObj = {
+        didCall: 'no',
+        go: getter(),
+      }
+    })
+
+    var result;
+
+    before(function () {
+      result = testObj.go('yes');
+    })
+
+    it('should return the object', function () {
+      return expect(result).equal(testObj);
+    })
+
+    it('should have the correct side effect', function () {
+      return expect(testObj.didCall).equal('yes');
+    })
+  },
+  function (arg) {
+    var self = this;
+    self.didCall = arg;
+    return 'original return value'
+  });
+
   ;(function () {
     var counter;
     testFn('memoize', [function (val) {return {val: val}}], function (getter) {
