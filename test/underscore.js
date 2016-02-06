@@ -120,4 +120,26 @@ describe('Underscore mixins', function () {
       return expect('foo {{name}}'.stencil({name: 'bar'})).equal('foo bar');
     })
   })
+
+  describe('applyMethod', function () {
+    var result, obj = {
+      method: function (x, y, z) {
+        var self = this;
+        self.x = x;
+        return [y, z];
+      },
+    };
+
+    before(function () {
+      result = obj._.applyMethod('method', [1, 2, 3]);
+    })
+
+    it('should have the side effect', function () {
+      return expect(obj.x).equal(1);
+    })
+
+    it('should have the correct result', function () {
+      return expect(result).deep.equal([2, 3]);
+    })
+  })
 })
