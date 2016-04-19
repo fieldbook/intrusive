@@ -24,6 +24,10 @@ describe('Function Builder', function () {
         });
       })
 
+      describe('description', function () {
+        // body...
+      })
+
       describe(' as prefix', function () {
         testAction(function () {
           return prefixFn
@@ -453,6 +457,75 @@ describe('Function Builder', function () {
       })
     }, function () {
       count++;
+    })
+  })
+
+  describe('when you pass in a method name instead of a function', function () {
+    var obj;
+
+    before(function () {
+      obj = {
+        state: 'initial',
+        foo: function () {
+          var self = this;
+          self.state = 'fooCalled';
+        }.after('bar'),
+
+        bar: function () {
+          var self = this;
+          self.setByBar = self.state;
+        },
+      }
+
+      obj.foo();
+    })
+
+    it('should call foo', function () {
+      return expect(obj.state).equal('fooCalled');
+    })
+
+    it('should call bar', function () {
+      return expect(obj.setByBar).not.undefined;
+    })
+
+    it('should call in the correct order', function () {
+      return expect(obj.setByBar).equal('fooCalled');
+    })
+  })
+
+  describe('when you pass in a soak path instead of a function', function () {
+    var obj;
+
+    before(function () {
+      obj = {
+        foo: function () {
+          var self = this;
+          self.child.state = 'fooCalled';
+        }.after('child.bar'),
+
+        child: {
+          state: 'initial',
+
+          bar: function () {
+            var self = this;
+            self.setByBar = self.state;
+          },
+        },
+      }
+
+      obj.foo();
+    })
+
+    it('should call foo', function () {
+      return expect(obj.child.state).equal('fooCalled');
+    })
+
+    it('should call child.bar', function () {
+      return expect(obj.child.setByBar).not.undefined;
+    })
+
+    it('should call in the correct order', function () {
+      return expect(obj.child.setByBar).equal('fooCalled');
     })
   })
 })
