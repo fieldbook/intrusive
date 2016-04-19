@@ -66,6 +66,51 @@ describe('Underscore mixins', function () {
     })
   })
 
+  describe('soakApply', function () {
+    var obj = {
+      nested: {
+        noArgs: function () {
+          return 1
+        },
+        fn: function (arg) { return arg },
+        get: function (key) {
+          if (key === 'passed') return true;
+          if (key === 'subObject') return {
+            method: function () {
+              return 'calledSubObjectMethod'
+            },
+          }
+          return false;
+        },
+        getHash: function () {
+          return {another: {nested: function () {
+            return 3
+          }}};
+        },
+      }
+    };
+
+    it('should return null for a nonexistant path', function () {
+      expect(obj._.soakApply('nested.nope.bar')).to.be.undefined;
+    })
+
+    it('should return the correct value for a nested path with no arguments', function () {
+      return expect(obj._.soakApply('nested.noArgs')).equal(1);
+    })
+
+    it('should call a function with the passed arg', function () {
+      return expect(obj._.soakApply('nested.fn', [2])).equal(2)
+    })
+
+    it('should call a getter', function () {
+      return expect(obj._.soakApply('nested.@subObject.method')).equal('calledSubObjectMethod');
+    })
+
+    it('should call an intermediate function', function () {
+      return expect(obj._.soakApply('nested.getHash().another.nested')).to.equal(3);
+    })
+  })
+
   describe('compactNullish', function () {
     it('should remove null and undefined', function () {
       return expect(_.compactNullish(['', true, undefined, false, null, 0, 1, 'foo'])).to.deep.equal(['', true, false, 0, 1, 'foo'])
