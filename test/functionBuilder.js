@@ -24,10 +24,6 @@ describe('Function Builder', function () {
         });
       })
 
-      describe('description', function () {
-        // body...
-      })
-
       describe(' as prefix', function () {
         testAction(function () {
           return prefixFn
