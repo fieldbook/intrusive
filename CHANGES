@@ -1,4 +1,4 @@
-1.0.6 - Add soakApply corresponding to soakCall
+1.0.6 - Add soakCall corresponding to soakApply
 1.0.5 - Add soakApply and allow soak strings to be passed as function builder arguments
 1.0.4 - Add applyMethod to underscore
 1.0.3 - Add postExtendHookable to global
