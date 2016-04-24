@@ -56,4 +56,26 @@ describe('Lazy property', function () {
       })
     })
   })
+
+  describe('when you add a lazy property but set it before it is ever accessed', function () {
+    var obj;
+    var callCount = 0;
+    before(function () {
+      obj = {};
+      makeLazyProperty(obj, 'val', function () {
+        callCount++;
+        return 'lazy';
+      })
+      obj.val = 'direct';
+    })
+
+    it('should set the property', function () {
+      return expect(obj.val).equal('direct');
+    })
+
+    it('should not call the getter', function () {
+      return expect(callCount).equal(0);
+    })
+
+  })
 })
