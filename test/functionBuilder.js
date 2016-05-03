@@ -228,6 +228,29 @@ describe('Function Builder', function () {
     })
   })
 
+  var bindApplyObj = {};
+  var bindApplyFn = function (a, b, c) {
+    var self = this;
+    self.x = 'was set';
+    return a * b + c;
+  }
+
+  testFn('bindApply', [bindApplyObj, [4, 5, 6]], function (getter) {
+    var result;
+    before(function () {
+      delete bindApplyObj.x;
+      result = getter()();
+    })
+
+    it('should bind to the context', function () {
+      return expect(bindApplyObj.x).equal('was set');
+    })
+
+    it('should bind the arguments correctly', function () {
+      return expect(result).equal(26);
+    })
+  }, bindApplyFn)
+
   var afterX = 1;
   var afterFn = function () {
     afterX = afterX * 5;
