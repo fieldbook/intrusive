@@ -1,6 +1,6 @@
 {
   "name": "intrusive",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "a set of intrusive javascript modules, not for use in libraries",
   "main": "index.js",
   "scripts": {
