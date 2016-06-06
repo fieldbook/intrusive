@@ -188,18 +188,18 @@ describe('Underscore mixins', function () {
     })
   })
 
-  describe('pluckSoak', function () {
+  describe('mapBySoak', function () {
     var array = [
       {nested: {foo: 1}},
       {},
       {nested: {bar: 1}}
     ];
     it('should do soak on each element', function () {
-      return expect(array._.pluckSoak('nested.foo')).deep.equal([1, undefined, undefined])
+      return expect(array._.mapBySoak('nested.foo')).deep.equal([1, undefined, undefined])
     })
   })
 
-  describe('filterSoak', function () {
+  describe('filterBySoak', function () {
     var Ctor = BaseObject.extend({
       check: function (otherValue) {
         return otherValue === this.value;
@@ -215,19 +215,19 @@ describe('Underscore mixins', function () {
     ]
 
     it('should handle missing member', function () {
-      return expect(arr._.filterSoak('bar.check', 12)).deep.equal([]);
+      return expect(arr._.filterBySoak('bar.check', 12)).deep.equal([]);
     })
 
     it('should handle missing method', function () {
-      return expect(arr._.filterSoak('foo.validate', 12)).deep.equal([]);
+      return expect(arr._.filterBySoak('foo.validate', 12)).deep.equal([]);
     })
 
     it('should handle method call', function () {
-      return expect(arr._.filterSoak('foo.check', 12)._.pluckSoak('foo.name')).deep.equal(['Alice', 'Bob', 'Debbie']);
+      return expect(arr._.filterBySoak('foo.check', 12)._.mapBySoak('foo.name')).deep.equal(['Alice', 'Bob', 'Debbie']);
     })
 
     it('should handle property access', function () {
-      return expect(arr._.filterSoak('foo.smart')._.pluckSoak('foo.name')).deep.equal(['Alice', 'Carlos', 'Debbie']);
+      return expect(arr._.filterBySoak('foo.smart')._.mapBySoak('foo.name')).deep.equal(['Alice', 'Carlos', 'Debbie']);
     })
   })
 
