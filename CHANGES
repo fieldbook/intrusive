@@ -1,3 +1,4 @@
+1.0.10 - Add _.filterBySoak and rename _.pluckSoak to mapBySoak (pluckSoak kept as a deprecated alias)
 1.0.9 - Make not using objectUnderscore possible
 1.0.8 - Add bindApply function builder
 1.0.7 - Add singletonable mixin and makeLazyProperty
