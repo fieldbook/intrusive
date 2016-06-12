@@ -1,3 +1,8 @@
+1.1.0 -
+  * Adds a babel plugin for precompiling object underscore calls
+  * Adds objectUnderscore.enableObjectUnderscore so that it can enabled selectively at runtime
+  * You can pass a custom underscore version to objectUnderscore.enableObjectUnderscore to make that the global
+
 1.0.10 - Add _.filterBySoak and rename _.pluckSoak to mapBySoak (pluckSoak kept as a deprecated alias)
 1.0.9 - Make not using objectUnderscore possible
 1.0.8 - Add bindApply function builder
