@@ -6,6 +6,9 @@ global.superExtendable = require('./lib/superExtendable');
 global.gettable = require('./lib/gettable');
 global.postExtendHookable = require('./lib/postExtendHookable');
 
+// Runtime function for the dot-underscore babel plugin
+require('./babel-plugins/dot-underscore-runtime');
+
 // Require some prototype modifiers
 require('./lib/q.fieldbook');
 require('./lib/underscore.fieldbook');
