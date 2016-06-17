@@ -1,4 +1,3 @@
-require('./init');
 var makeLazyProperty = require('../lib/makeLazyProperty');
 
 describe('Lazy property', function () {

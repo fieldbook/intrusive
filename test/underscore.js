@@ -1,5 +1,3 @@
-require('./init');
-
 describe('Underscore mixins', function () {
   describe('ensurePath', function () {
     var noop, addFull, addPart, addArray;

@@ -15,8 +15,8 @@ var projpath = function (relativePath) {
 // First require in the babel hook
 require('babel-register')({
   ignore: function (filename) {
-    // Only needed for one test file
-    return (!/test\/dot-underscore/.test(filename))
+    // Only use in babel tests
+    return (!/test\/babel-plugins\//.test(filename))
   },
   compact: false,
   plugins: [

@@ -1,4 +1,3 @@
-var init = require('./init');
 var singletonable = require('../lib/singletonable');
 
 describe('Singletonable', function () {

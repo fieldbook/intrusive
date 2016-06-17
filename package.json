@@ -4,7 +4,7 @@
   "description": "a set of intrusive javascript modules, not for use in libraries",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --harmony"
+    "test": "mocha --harmony -r \"test/init\" \"test/**/*.js\""
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,3 @@
-require('./init');
-
 // Test prototypes
 var BaseObject = require('../lib/baseObject');
 
