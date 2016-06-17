@@ -35,6 +35,7 @@
     "expect": false,
     "BaseObject": true,
     "FB": true,
-    "_": false
+    "_": false,
+    "IfUnset": false
   }
 }

@@ -22,5 +22,6 @@ require('babel-register')({
   plugins: [
     "transform-es2015-block-scoping",
     projpath("babel-plugins/dot-underscore"),
+    projpath("babel-plugins/if-unset"),
   ],
 });
