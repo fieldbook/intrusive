@@ -1,13 +1,13 @@
 // Adds syntax for defaulting nullish values (null or undefined).
 // Usage:
 //   Single value
-//     IfUnset foo = 'bar';
+//     IfUnset, foo = 'bar';
 //
 //   Multiple values:
-//     IfUnset foo = 'bar', baz = 'qux';
+//     IfUnset, foo = 'bar', baz = 'qux';
 //
 //  Member expressions:
-//     IfUnset foo.bar = 'baz'
+//     IfUnset, foo.bar = 'baz'
 //
 //  Note that you cannot use this macro on the arguments array.
 
