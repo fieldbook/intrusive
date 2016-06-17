@@ -1,3 +1,4 @@
+1.1.1 - Add IfUnset babel plugin for defaulting values
 1.1.0 -
   * Adds a babel plugin for precompiling object underscore calls
   * Adds objectUnderscore.enableObjectUnderscore so that it can enabled selectively at runtime

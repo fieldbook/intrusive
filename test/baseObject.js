@@ -1,5 +1,3 @@
-require('./init');
-
 var BaseObject = require('../lib/baseObject');
 
 var ChildObject = BaseObject.extend({});

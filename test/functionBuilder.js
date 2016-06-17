@@ -1,4 +1,3 @@
-require('./init');
 var FunctionBuilder = require('../lib/functionBuilder');
 
 describe('Function Builder', function () {

@@ -1,5 +1,3 @@
-var init = require('./init');
-
 describe('Dot underscore', function () {
   var fn = function (arr) {
     return arr._.pluck('length');

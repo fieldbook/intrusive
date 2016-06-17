@@ -1,5 +1,3 @@
-require('./init');
-
 var Checker = require('jscs/lib/checker');
 
 var checkTests = function (options) {

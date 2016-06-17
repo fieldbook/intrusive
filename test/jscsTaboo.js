@@ -1,4 +1,3 @@
-require('./init');
 var Checker = require('jscs/lib/checker');
 
 describe('Taboo jscs rule', function () {
