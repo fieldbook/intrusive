@@ -121,4 +121,16 @@ describe('IfUnset', function () {
       return expect(fn([])).deep.equal(expected)
     })
   })
+
+  describe('as an expression', function () {
+    var x = 1;
+    verify(function (a) {
+      x = (IfUnset, a = 'overridden');
+      return a;
+    })
+
+    it('should evaluate to undefined', function () {
+      return expect(x).undefined;
+    })
+  })
 })
