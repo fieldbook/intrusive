@@ -110,10 +110,13 @@ module.exports = function (babel) {
       return t.expressionStatement(t.assignmentExpression('=', left, right));
     }
 
-    // Wrap the block of expressions in an iife (because we must return an expression)
+    // Wrap the block of expressions in a bound iife (because we must return an expression)
     path.replaceWith(t.callExpression(
-      t.functionExpression(null, [], makeBlock(path.node.expressions.slice(1))),
-      []
+      t.memberExpression(
+        t.functionExpression(null, [], makeBlock(path.node.expressions.slice(1))),
+        t.identifier('call')
+      ),
+      [t.thisExpression()]
     ));
   }
 

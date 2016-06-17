@@ -88,6 +88,17 @@ describe('IfUnset', function () {
     })
   })
 
+  describe('using this', function () {
+    var testObj = {
+      a: 'overridden',
+      fn: function (a) {
+        IfUnset, a = this.a; // jscs: nestedThisOk
+        return a;
+      },
+    }
+    verify(testObj.fn.bind(testObj))
+  })
+
   describe('computed member with side effects', function () {
     // Check that the left hand side does not get called repeatedly
     var getMemberNameCallCount = 0;
