@@ -6,5 +6,5 @@
 // wrapper for the object.
 global._getUnderscore = function (obj) {
   // The `in` operator can only be used with objects
-  return (typeof obj === 'object' && '_' in obj) ? obj['_'] : _(obj);
+  return (typeof obj === 'object' && obj !== null && '_' in obj) ? obj['_'] : _(obj);
 }

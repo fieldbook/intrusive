@@ -1,3 +1,4 @@
+1.1.3 - Fix `null` case in dot-underscore plugin
 1.1.2 - Fix `this` in IfUnset macro
 1.1.1 - Add IfUnset babel plugin for defaulting values
 1.1.0 -
