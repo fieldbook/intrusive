@@ -7,8 +7,12 @@ describe('Dot underscore', function () {
     return expect(fn(['foo'])).deep.equal([3]);
   })
 
-  it('should work on null', function () {
+  it('should work on undefined', function () {
     return expect(fn()).deep.equal([])
+  })
+
+  it('should work on null', function () {
+    return expect(fn(null)).deep.equal([])
   })
 
   it('should work on a custom property', function () {
