@@ -200,7 +200,7 @@ describe('Underscore mixins', function () {
   describe('filterBySoak', function () {
     var Ctor = BaseObject.extend({
       check: function (otherValue) {
-        return otherValue === this.value;
+        return otherValue === this.value; // jscs: nestedThisOk
       },
     }).addProperties('value', 'name', 'smart');
 
@@ -226,6 +226,60 @@ describe('Underscore mixins', function () {
 
     it('should handle property access', function () {
       return expect(arr._.filterBySoak('foo.smart')._.mapBySoak('foo.name')).deep.equal(['Alice', 'Carlos', 'Debbie']);
+    })
+  })
+
+  describe('bySoak methods', function () {
+    var soakString = 'foo.bar.baz()'
+    var makeArray = function (inputArray) {
+      return inputArray.map(function (val, i) {
+        return {foo: {bar: {baz: _.constant(val)}}, index: i};
+      });
+    }
+
+    describe('rejectBySoak', function () {
+      it('should return the correct elements', function () {
+        var arr = makeArray([true, false, false, true])
+        return expect(arr._.rejectBySoak(soakString)._.pluck('index')).deep.equal([1, 2])
+      })
+    })
+
+    describe('findBySoak', function () {
+      it('should return the correct element', function () {
+        var arr = makeArray([false, false, false, true])
+        return expect(arr._.findBySoak(soakString).index).equal(3);
+      })
+    })
+
+    describe('findIndexBySoak', function () {
+      it('should return the correct index', function () {
+        var arr = makeArray([false, false, false, true])
+        return expect(arr._.findIndexBySoak(soakString)).equal(3);
+      })
+    })
+
+    describe('everyBySoak', function () {
+      it('should return false', function () {
+        var arr = makeArray([false, false, false, true])
+        return expect(arr._.everyBySoak(soakString)).false
+      })
+
+      it('should return true', function () {
+        var arr = makeArray([true, true, true, true])
+        return expect(arr._.everyBySoak(soakString)).true
+      })
+    })
+
+    describe('someBySoak', function () {
+      it('should return true', function () {
+        var arr = makeArray([false, false, false, true])
+        return expect(arr._.someBySoak(soakString)).true
+      })
+
+      it('should return false', function () {
+        var arr = makeArray([false, false, false, false])
+        return expect(arr._.someBySoak(soakString)).false
+      })
     })
   })
 
