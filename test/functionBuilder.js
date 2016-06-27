@@ -46,7 +46,7 @@ describe('Function Builder', function () {
     })
   })
 
-  testFn('qThen', [function (x) { return x + 1;}], function (getter) {
+  testFn('qThen', [function (x) { return x + 1; }], function (getter) {
     var fn;
     before(function () {
       fn = getter();
@@ -132,7 +132,7 @@ describe('Function Builder', function () {
     })
   })
 
-  testFn('qSpread', [function (a, b, c) { return a + b + c;}], function (getter) {
+  testFn('qSpread', [function (a, b, c) { return a + b + c; }], function (getter) {
     var fn;
     before(function () {
       fn = getter();
@@ -306,7 +306,7 @@ describe('Function Builder', function () {
   var withResultFn = function (result, args) {
     return {
       result: result,
-      args: args
+      args: args,
     }
   }
 
@@ -355,9 +355,9 @@ describe('Function Builder', function () {
     return 'original return value'
   });
 
-  ;(function () {
+  (function () {
     var counter;
-    testFn('memoize', [function (val) {return {val: val}}], function (getter) {
+    testFn('memoize', [function (val) { return {val: val} }], function (getter) {
       var fn;
       var result;
       var oldCounter;
@@ -459,7 +459,7 @@ describe('Function Builder', function () {
     var count = 0;
     testFn('forceReturn', [5], function (getter) {
       var fn, result;
-      before(function () { fn = getter()})
+      before(function () { fn = getter() })
 
       beforeEach(function () {
         count = 0;

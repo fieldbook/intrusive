@@ -40,7 +40,7 @@ describe('Underscore mixins', function () {
         getHash: function () {
           return {another: {nested: 3}};
         },
-      }
+      },
     };
 
     it('should return null for a nonexistant path', function () {
@@ -85,7 +85,7 @@ describe('Underscore mixins', function () {
             return 3
           }}};
         },
-      }
+      },
     };
 
     it('should return null for a nonexistant path', function () {
@@ -133,7 +133,7 @@ describe('Underscore mixins', function () {
             return 3
           }}};
         },
-      }
+      },
     };
 
     it('should return null for a nonexistant path', function () {
@@ -190,7 +190,7 @@ describe('Underscore mixins', function () {
     var array = [
       {nested: {foo: 1}},
       {},
-      {nested: {bar: 1}}
+      {nested: {bar: 1}},
     ];
     it('should do soak on each element', function () {
       return expect(array._.mapBySoak('nested.foo')).deep.equal([1, undefined, undefined])
@@ -200,7 +200,7 @@ describe('Underscore mixins', function () {
   describe('filterBySoak', function () {
     var Ctor = BaseObject.extend({
       check: function (otherValue) {
-        return otherValue === this.value; // jscs: nestedThisOk
+        return otherValue === this.value; // eslint-disable-line fieldbook/no-nested-this
       },
     }).addProperties('value', 'name', 'smart');
 
@@ -287,7 +287,8 @@ describe('Underscore mixins', function () {
     var obj = {
       bar: 2,
       meth: function (item) {
-        return this.bar + item; // jscs: nestedThisOk
+        var self = this;
+        return self.bar + item; // eslint-disable-line fieldbook/no-nested-this
       },
     }
 
@@ -304,12 +305,12 @@ describe('Underscore mixins', function () {
 
   describe('applyMethod', function () {
     var result, obj = {
-      method: function (x, y, z) {
-        var self = this;
-        self.x = x;
-        return [y, z];
-      },
-    };
+        method: function (x, y, z) {
+          var self = this;
+          self.x = x;
+          return [y, z];
+        },
+      };
 
     before(function () {
       result = obj._.applyMethod('method', [1, 2, 3]);

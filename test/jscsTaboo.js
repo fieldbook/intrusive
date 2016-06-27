@@ -10,15 +10,15 @@ describe('Taboo jscs rule', function () {
       taboo: [
         'tabooName',
         'otherTabooName',
-        'tabooParam'
-      ]
+        'tabooParam',
+      ],
     })
   })
 
   describe('when a file has taboo identifiers', function () {
     var check;
     before(function () {
-      return checker.checkFile('jscs-fixtures/taboo.js').then(function (c) {check = c});
+      return checker.checkFile('jscs-fixtures/taboo.js').then(function (c) { check = c });
     })
 
     it('should have the right number of errors', function () {

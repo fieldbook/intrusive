@@ -92,7 +92,7 @@ describe('IfUnset', function () {
     var testObj = {
       a: 'overridden',
       fn: function (a) {
-        IfUnset, a = this.a; // jscs: nestedThisOk
+        IfUnset, a = this.a; // eslint-disable-line fieldbook/no-nested-this
         return a;
       },
     }
