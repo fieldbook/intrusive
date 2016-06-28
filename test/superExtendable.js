@@ -21,7 +21,7 @@ var TwoWords = OneWord.superExtend(function (sup) {
 var TwoWordsPlural = TwoWords.superExtend(function (sup) {
   return {
     firstWord: 'foos',
-    secondWord: 'bars'
+    secondWord: 'bars',
   }
 })
 

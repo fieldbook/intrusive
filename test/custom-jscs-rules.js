@@ -37,7 +37,7 @@ describe('Custom JSCS rules', function () {
     },
     describe: 'when a file has .only in it',
     errorCount: 1,
-    file: 'jscs-fixtures/only.js'
+    file: 'jscs-fixtures/only.js',
   })
 
   checkTests({
@@ -46,7 +46,7 @@ describe('Custom JSCS rules', function () {
     },
     describe: 'when a file has a bare string throw',
     errorCount: 2,
-    file: 'jscs-fixtures/throw.js'
+    file: 'jscs-fixtures/throw.js',
   })
 
   checkTests({
@@ -56,6 +56,6 @@ describe('Custom JSCS rules', function () {
     },
     describe: 'when a file has no style errors',
     errorCount: 0,
-    file: 'jscs-fixtures/noErrors.js'
+    file: 'jscs-fixtures/noErrors.js',
   })
 })

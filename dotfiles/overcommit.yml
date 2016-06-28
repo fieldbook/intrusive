@@ -47,13 +47,12 @@ PreCommit:
   JsonSyntax:
     enabled: true
 
-  Jscs:
+  EsLint:
     enabled: true
-    on_warn: fail
-
-  JsHint:
-    enabled: true
-    on_warn: fail
+    command: ['node_modules/.bin/eslint']
+    # Replicate eslintignore for committed files to avoid warnings from eslint
+    # about checking ignored files files
+    exclude: ['jscs-fixtures', 'node-modules/**']
 
   TrailingWhitespace:
     enabled: true

@@ -29,6 +29,6 @@ module.exports = function (babel) {
 
         path.replaceWith(replacement);
       },
-    }
+    },
   }
 }

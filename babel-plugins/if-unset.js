@@ -98,7 +98,7 @@ module.exports = function (babel) {
       var safeMember = t.memberExpression(tempObjectId, safeProperty, computed);
       return t.blockStatement([
         t.variableDeclaration('var', declarators),
-        makeConditionalAssignment(safeMember, right)
+        makeConditionalAssignment(safeMember, right),
       ])
     }
 
@@ -121,6 +121,6 @@ module.exports = function (babel) {
   }
 
   return {
-    visitor: {SequenceExpression: handleNode}
+    visitor: {SequenceExpression: handleNode},
   }
 }

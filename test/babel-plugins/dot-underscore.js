@@ -18,8 +18,8 @@ describe('Dot underscore', function () {
   it('should work on a custom property', function () {
     return expect(fn({
       _: {
-        pluck: _.constant('custom')
-      }
+        pluck: _.constant('custom'),
+      },
     })).equal('custom');
   })
 
