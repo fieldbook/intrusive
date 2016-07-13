@@ -51,6 +51,8 @@ module.exports = {
     "AddSignatures": false,
     "IfUnset": false,
     "me": false,
+    "If": false,
+    "Unless": false,
 
     // Browser globals, don't want to use preset in order to avoid things like
     // the global event
@@ -95,6 +97,7 @@ module.exports = {
   "extends": "eslint:recommended",
   "rules": {
     "no-undef": ["error", {typeof: false}],
+    "no-unreachable": "off",
     "no-unused-vars": "off",
     "accessor-pairs": "error",
     "array-bracket-spacing": [
