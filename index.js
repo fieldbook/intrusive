@@ -8,6 +8,7 @@ global.postExtendHookable = require('./lib/postExtendHookable');
 
 // Runtime function for the dot-underscore babel plugin
 require('./babel-plugins/dot-underscore-runtime');
+require('./babel-plugins/soak-runtime');
 
 // Require some prototype modifiers
 require('./lib/q.fieldbook');
