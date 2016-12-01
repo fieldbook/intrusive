@@ -31,8 +31,15 @@ describe('Soak plugin', function () {
     return expect(+~fooBarBaz.foo.bar).equal('baz');
   })
 
-  it('should not duplicate side effects', function () {
+  it('should not duplicate side effects from function calls', function () {
     expect(+~fooBarBaz.action().actionCount).equal(1)
+  })
+
+  it('should not duplicate side effects from array subscripts', function () {
+    let index = 0;
+    let arr = [{x: 'y'}];
+    expect(+~arr[index++].x).equal('y');
+    expect(index).equal(1);
   })
 
   it('should work for computed keys', function () {
@@ -95,5 +102,16 @@ describe('Soak plugin', function () {
     expect(function () {
       +~fooBarBaz.foo();
     }).to.throw(/not a function/)
+  })
+
+  it('should return null if null is the end of the chain', function () {
+    let obj = {x: null}
+    expect(+~obj.x).null;
+  })
+
+  it('should work when the result of the expression is unused', function () {
+    fooBarBaz.actionCount = 0;
+    +~fooBarBaz.action().foo;
+    expect(fooBarBaz.actionCount).equal(1);
   })
 })
