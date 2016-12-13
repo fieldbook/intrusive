@@ -1,6 +1,6 @@
 {
   "name": "intrusive",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "a set of intrusive javascript modules, not for use in libraries",
   "main": "index.js",
   "scripts": {
@@ -29,9 +29,10 @@
     "chai-as-promised": "^5.2.0",
     "eslint": "^2.13.1",
     "eslint-plugin-fieldbook": "0.0.2",
+    "jscs": "^2.9.0",
     "mocha": "2.3.3"
   },
   "engines": {
-    "node": "5.1.0"
+    "node": "6.3.0"
   }
 }

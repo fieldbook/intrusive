@@ -180,7 +180,7 @@ module.exports = {
     "newline-per-chained-call": "off",
     "no-alert": "off",
     "no-array-constructor": "error",
-    "no-bitwise": "error",
+    "no-bitwise": "off",
     "no-caller": "error",
     "no-catch-shadow": "error",
     "no-confusing-arrow": "off",
