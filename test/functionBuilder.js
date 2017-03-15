@@ -357,7 +357,7 @@ describe('Function Builder', function () {
 
   (function () {
     var counter;
-    testFn('memoize', [function (val) { return {val: val} }], function (getter) {
+    testFn('memoizeMethod', [function (val) { return {val: val} }], function (getter) {
       var fn;
       var result;
       var oldCounter;
