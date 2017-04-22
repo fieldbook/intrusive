@@ -4,7 +4,7 @@
   "description": "a set of intrusive javascript modules, not for use in libraries",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --harmony -r \"test/init\" \"test/**/*.js\""
+    "test": "eslint . && mocha --harmony -r \"test/init\" \"test/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,8 @@
     "babel-register": "^6.9.0",
     "chai": "^3.4.1",
     "chai-as-promised": "^5.2.0",
-    "eslint": "^2.13.1",
-    "eslint-plugin-fieldbook": "0.0.2",
+    "eslint": "^3.16.1",
+    "eslint-plugin-fieldbook": "0.0.6",
     "jscs": "^2.9.0",
     "mocha": "2.3.3"
   },
