@@ -323,7 +323,7 @@ describe('Function Builder', function () {
       })
     })
   }, function (x, y, z) {
-    return [x, y, z]._.invoke('capitalize').join('');
+    return _.invoke([x, y, z], 'capitalize').join('');
   })
 
   testFn('chainable', function (getter) {
