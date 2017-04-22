@@ -36,7 +36,7 @@ describe('Singletonable', function () {
       })
 
       it('should have the correct properties', function () {
-        return expect(Klass.singleton._.pick('a', 'b', 'c')).deep.equal({a: 1, b: 2, c: 3});
+        return expect(_.pick(Klass.singleton, 'a', 'b', 'c')).deep.equal({a: 1, b: 2, c: 3});
       })
     })
   })

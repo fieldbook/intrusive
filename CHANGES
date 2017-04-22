@@ -1,3 +1,4 @@
+1.1.7 - Remove object prototype underscore decoration, deprecated in favor of babel plugin
 1.1.6 - Rename memoize function builder to memoizeMethod in order to make it clear that it should not be used on bare functions
 1.1.5 - Add unary +~ as soak operator
 1.1.4 - More *BySoak methods

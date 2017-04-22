@@ -13,7 +13,11 @@ module.exports = {
     "$": true, // Client sometimes imports $
     "Q": true, // Client has to import Q, server doesn't
     "_": false,
+    "knex": true,
     "mongooseHelpers": false,
+    "pgHelpers": false,
+    "argsHelpers": false,
+    "SQL": false,
     "extendable": false,
     "superExtendable": false,
     "postExtendHookable": false,
@@ -23,6 +27,7 @@ module.exports = {
     "Tips": false,
     "logger": false,
     "prequire": false,
+    "drequire": false,
     "projpath": false,
     "require": false,
     "rootdir": false,
@@ -46,6 +51,9 @@ module.exports = {
     "AppError": false,
     "defaultErrorHandler": false,
     "s": false,
+    "ms": false,
+    "dlog": false,
+    "LOG_ALL": false,
 
     // Macros
     "AddSignatures": false,
@@ -70,6 +78,8 @@ module.exports = {
     "beforeEach": false,
     "anyBefore": false,
     "describe": false,
+    "anyDescribe": false,
+    "describeSequence": false,
     "expect": false,
     "given": false,
     "helpers": true,
@@ -77,12 +87,15 @@ module.exports = {
     "pages": false,
     "faker": true,
     "Call": false,
+    "DeferredCall": false,
     "client": false,
     "it": false,
+    "anyIt": false,
     "testUndo": false,
     "scenarios": false,
     "wait": false,
     "promised": false,
+    "P": false,
     "Fieldbook": false,
     "ExternalForm": false,
     "fixtures": true,
@@ -90,7 +103,12 @@ module.exports = {
     "describeAndStash": false,
     "DBVAL": false,
     "autoMock": true,
-    "mobileSite": false
+    "mobileSite": false,
+    "LLOG": false,
+    "Experiment": true,
+
+    // Global symbols
+    "BYPASS_DEPRECATION": false, // used by the deprecate function builder to allow specific calls to a method
   },
   "extends": "eslint:recommended",
   "rules": {
@@ -221,7 +239,7 @@ module.exports = {
       }
     }],
     "no-multi-str": "error",
-    "no-multiple-empty-lines": "error",
+    "no-multiple-empty-lines": ["error", {max: 1}],
     "no-native-reassign": "error",
     "no-negated-condition": "off",
     "no-nested-ternary": "error",
@@ -350,7 +368,8 @@ module.exports = {
         "runScript",
         "runViewScript",
         "wait",
-        "wrap"
+        "wrap",
+        "runBackends",
       ],
       "allowedGrandparents": ["superExtend", "mixin"],
       "allowedConstructors": ["Call"]
@@ -358,17 +377,50 @@ module.exports = {
 
     "fieldbook/no-unsafe-moment": "error",
     "fieldbook/bare-throw": "error",
+    "fieldbook/no-template-substitions-in-strings": "error",
 
     "fieldbook/taboo-identifiers": ["error",
-      "noSiteQuit",
-      "PAUSE",
-      "COPY",
-      "DBVAL",
-      "dlog"
+      // Q methods (use DomainContext equivalents)
+      "nfbind",
+      "nbind",
+      "nfcall",
+      "ninvoke",
+      "npost",
     ],
 
     "fieldbook/taboo-members": ["error",
       "only",
-    ]
+      "done",
+    ],
+
+    "fieldbook/no-selenium-promise-in-async": ["error",
+      '^page.*',
+      '.*Page$',
+      '^site$',
+    ],
+
+    "fieldbook/no-unused-promise": ["error",
+      /^qsave$/,
+      /^qexec$/,
+      /^qreload$/,
+      /^qrun$/,
+      /^qremove$/,
+      /^qcreate$/,
+      /^toPromise$/,
+      /^then$/,
+      /^tap$/,
+      /^when$/,
+      /^fail$/,
+      /^finally$/,
+      /^q$/,
+      /^serialMap$/,
+      /^SafePromise$/,
+      /^q[A-Z]/,
+      /^waitForTestHook$/,
+
+      // Collectionize methods which are promised because of hooks
+      /^(restore|remove)Field$/,
+      /^restoreSheet$/,
+    ],
   }
 };

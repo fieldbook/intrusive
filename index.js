@@ -1,4 +1,5 @@
 // Setup globals
+global._ = require('underscore');
 global.Q = require('q');
 global.BaseObject = require('./lib/baseObject');
 global.extendable = require('./lib/extendable');
@@ -13,6 +14,5 @@ require('./babel-plugins/soak-runtime');
 // Require some prototype modifiers
 require('./lib/q.fieldbook');
 require('./lib/underscore.fieldbook');
-require('./lib/objectUnderscore');
 require('./lib/proto/index');
 require('./lib/functionBuilder');
