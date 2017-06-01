@@ -5,6 +5,7 @@
     cases where you need to pass an arguments object
   * FunctionBuilder no longer supports soak strings (but still supports direct
     method names)
+  * Fix memoizeMethod.clear functionality, see new call style in functionBuilder.js
 1.1.8 - Fix bug with resolveObject
 1.1.7 - Remove object prototype underscore decoration, deprecated in favor of babel plugin
 1.1.6 - Rename memoize function builder to memoizeMethod in order to make it clear that it should not be used on bare functions

@@ -361,13 +361,24 @@ describe('Function Builder', function () {
       var fn;
       var result;
       var oldCounter;
+      let obj;
       before(function () {
         counter = 0;
         fn = getter();
+
+        obj = {cid: 1};
+        fn.call(obj, 1);
+
+        // Setup a second one to test an error case with multiple memoize
+        // methods
+        let otherObj = {cid: 2};
+        fn.call(otherObj, 2);
+
+        counter = 0; // reset counter
       })
 
       before(function () {
-        result = fn(5);
+        result = fn.call(obj, 5);
       })
 
       it('should return the correct result', function () {
@@ -378,10 +389,14 @@ describe('Function Builder', function () {
         return expect(counter).equal(1);
       })
 
+      it('should error when you call clear without context', function () {
+        return expect(function () { fn.clear() }).to.throw;
+      })
+
       describe('when you call it again with a different value', function () {
         before(function () {
           oldCounter = counter;
-          result = fn(6);
+          result = fn.call(obj, 6);
         })
 
         it('should return the correct result', function () {
@@ -396,7 +411,7 @@ describe('Function Builder', function () {
       describe('when you call it again with the same value', function () {
         before(function () {
           oldCounter = counter;
-          result = fn(5);
+          result = fn.call(obj, 5);
         })
 
         it('should return the correct result', function () {
@@ -411,8 +426,8 @@ describe('Function Builder', function () {
       describe('when you clear it and call it the first value', function () {
         before(function () {
           oldCounter = counter;
-          fn.clear();
-          result = fn(5);
+          fn.clear.call(obj);
+          result = fn.call(obj, 5);
         })
 
         it('should return the correct result', function () {
@@ -426,7 +441,7 @@ describe('Function Builder', function () {
         describe('when you call it again with the same value', function () {
           before(function () {
             oldCounter = counter;
-            result = fn(5);
+            result = fn.call(obj, 5);
           })
 
           it('should return the correct result', function () {
@@ -438,7 +453,6 @@ describe('Function Builder', function () {
           })
         })
       })
-
     }, function (val) {
       counter++;
       return val + 1;
