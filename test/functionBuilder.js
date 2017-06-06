@@ -501,11 +501,13 @@ describe('Function Builder', function () {
         foo: function () {
           var self = this;
           self.state = 'fooCalled';
+          self.calledFoo = true;
         }.after('bar'),
 
         bar: function () {
           var self = this;
-          self.setByBar = self.state;
+          self.state = 'barCalled'
+          self.calledBar = true;
         },
       }
 
@@ -513,15 +515,50 @@ describe('Function Builder', function () {
     })
 
     it('should call foo', function () {
-      return expect(obj.state).equal('fooCalled');
+      return expect(obj.calledFoo).to.be.true;
     })
 
     it('should call bar', function () {
-      return expect(obj.setByBar).not.undefined;
+      return expect(obj.calledBar).to.be.true;
     })
 
     it('should call in the correct order', function () {
-      return expect(obj.setByBar).equal('fooCalled');
+      return expect(obj.state).equal('barCalled');
+    })
+  })
+
+  describe('when you pass in a method name instead of a function with a before function', function () {
+    var obj;
+
+    before(function () {
+      obj = {
+        state: 'initial',
+        foo: function () {
+          var self = this;
+          self.state = 'fooCalled';
+          self.calledFoo = true;
+        }.before('bar'),
+
+        bar: function () {
+          var self = this;
+          self.state = 'barCalled'
+          self.calledBar = true;
+        },
+      }
+
+      obj.foo();
+    })
+
+    it('should call foo', function () {
+      return expect(obj.calledFoo).to.be.true;
+    })
+
+    it('should call bar', function () {
+      return expect(obj.calledBar).to.be.true;
+    })
+
+    it('should call in the correct order', function () {
+      return expect(obj.state).equal('fooCalled');
     })
   })
 })
