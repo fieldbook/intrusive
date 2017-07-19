@@ -1,3 +1,4 @@
+1.1.12 - Fix let
 1.1.11 - Fix memoizeMethod to use a non-enumerable property
 1.1.10 - Fixes for using with uglify-js (avoid let)
 1.1.9 -
