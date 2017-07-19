@@ -459,6 +459,28 @@ describe('Function Builder', function () {
     })
   })();
 
+  describe('when you have 2 objects with a memoized method', function () {
+    let MemoClass = BaseObject.extend({
+      inputMethod: function (a) {
+        return a;
+      }.memoizeMethod(),
+    })
+
+    it('should have 2 blank objects as isEqual', function () {
+      let a = new MemoClass();
+      let b = new MemoClass();
+
+      // Call the memoized method
+      a.inputMethod(1);
+      b.inputMethod(2);
+
+      // Sync up cids
+      b.cid = a.cid;
+
+      return expect(_.isEqual(a, b)).to.be.true;
+    })
+  })
+
   describe('when you use a custom builder', function () {
     before(function () {
       FunctionBuilder.register('forceReturn', function (fn, forced) {
